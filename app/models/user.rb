@@ -27,4 +27,8 @@ class User < ApplicationRecord
     "Anonymous"
   end
 
+  def self.search(params)
+    User.last
+  end
+
 end
