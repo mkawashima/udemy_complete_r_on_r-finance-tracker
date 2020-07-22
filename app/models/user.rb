@@ -31,6 +31,10 @@ class User < ApplicationRecord
     users.reject { |user| user.id == self.id}
   end
 
+  def not_friends_with?(id_of_friend)
+    !self.friends.where(id: id_of_friend).exists?
+  end
+
   def self.search(param)
     param.strip!
     to_send_back = (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq
